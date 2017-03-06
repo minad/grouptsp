@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project default="all" basedir=".">
+
+  <!-- Properties laden -->
+  <property file="build.properties"/>
+
+  <!-- Classpath erstellen -->
+  <path id="classpath">
+    <pathelement path="${classpath}/"/>
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+  <!-- Alles erstellen -->
+  <target name="all" depends="clean,compile,binary" description="Alles erstellen"/>
+
+  <!-- Verzeichnisse bereinigen -->
+  <target name="clean" description="Verzeichnisse bereinigen">
+    <delete dir="${build.dir}"/>
+    <delete file="${bin.dir}/${bin.file}"/>
+  </target>
+
+  <!-- Quellen kompilieren -->
+  <target name="compile"
+          description="Quellen kompilieren">
+    <mkdir dir="${build.dir}"/>
+    <copy todir="${build.dir}">
+      <fileset dir="${src.dir}" excludes="**/*.java"/>
+    </copy>
+    <javac compiler="${compile.compiler}"
+           srcdir="${src.dir}"
+           destdir="${build.dir}"
+           debug="true"
+           debuglevel="${compile.debuginfo}"
+           optimize="${compile.optimize}"
+           deprecation="${compile.deprecation}"
+	   classpathref="classpath"/>
+  </target>
+
+  <!-- Binary erstellen -->
+  <target name="binary" depends="compile" description="Binary erstellen">
+    <mkdir dir="${bin.dir}"/>
+    <jar jarfile="${bin.dir}/${bin.file}">
+      <fileset dir="${build.dir}"/>
+      <manifest>
+        <attribute name="Main-Class" value="${main.class}"/>
+      </manifest>
+    </jar>
+    <chmod file="${bin.dir}/${bin.file}" perm="755"/>
+  </target>
+
+</project>
