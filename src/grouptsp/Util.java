@@ -32,8 +32,8 @@ import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
 import javax.swing.plaf.FontUIResource;
 
-import com.incors.plaf.kunststoff.KunststoffLookAndFeel;
-import com.incors.plaf.kunststoff.KunststoffTheme;
+//import com.incors.plaf.kunststoff.KunststoffLookAndFeel;
+//import com.incors.plaf.kunststoff.KunststoffTheme;
 
 public class Util {
 
@@ -79,8 +79,8 @@ public class Util {
 
     public static void setLookAndFeel() {
         try {
-            KunststoffLookAndFeel.setCurrentTheme(new MyTheme());
-            UIManager.setLookAndFeel(new KunststoffLookAndFeel());
+            //KunststoffLookAndFeel.setCurrentTheme(new MyTheme());
+            //UIManager.setLookAndFeel(new KunststoffLookAndFeel());
         // Alle Exceptions abfangen (Look&Feel ist egal)
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -229,7 +229,7 @@ public class Util {
 /*
  * GUI-Thema
  */
-
+/*
 class MyTheme extends KunststoffTheme {
     private FontUIResource defaultFont =
          new FontUIResource("Tahoma", Font.PLAIN, 12);
@@ -273,3 +273,4 @@ class MyTheme extends KunststoffTheme {
     }
 }
 
+*/

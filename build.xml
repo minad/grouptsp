@@ -33,7 +33,8 @@
            debuglevel="${compile.debuginfo}"
            optimize="${compile.optimize}"
            deprecation="${compile.deprecation}"
-	   classpathref="classpath"/>
+           classpathref="classpath"
+           encoding="iso-8859-1"/>
   </target>
 
   <!-- Binary erstellen -->
